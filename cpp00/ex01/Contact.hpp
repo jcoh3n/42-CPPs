@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:07 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/03 15:21:28 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/05 21:28:18 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,7 @@
 
 #include <iostream>
 #include <string>
-
-// Cette classe représente un contact individuel
-// Elle doit stocker les informations suivantes en privé :
-
-//     Prénom(first name)
-//     Nom(last name)
-//     Surnom(nickname)
-//     Numéro de téléphone
-//     Secret le plus sombre(darkest secret)
-
-// Elle doit avoir des méthodes pour accéder et modifier ces informations
+#include <sstream>
 
 class Contact
 {
@@ -41,7 +31,6 @@ public:
     ~Contact(); // Destructeur
 
     // LES SETTERS
-    // 1 setter par attribut privé
     void setFirstName(std::string firstName);
     void setLastName(std::string lastName);
     void setNickname(std::string nickname);
@@ -49,7 +38,11 @@ public:
     void setDarkestSecret(std::string darkestSecret);
 
     // LES GETTERS
-    // 1 getter par attribut privé
+    std::string getFirstName();
+    std::string getLastName();
+    std::string getNickname();
+    std::string getPhoneNumber();
+    std::string getDarkestSecret();
     
 };
 

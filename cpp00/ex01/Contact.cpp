@@ -6,20 +6,19 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:08 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/03 15:42:21 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/05 21:31:35 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact()
-{
-}
+// Constructeur
+Contact::Contact() {}
 
-Contact::~Contact()
-{
-}
+// Destructeur
+Contact::~Contact() {}
 
+// SETTERS
 void Contact::setFirstName(std::string firstName)
 {
     this->firstName = firstName;
@@ -43,4 +42,30 @@ void Contact::setPhoneNumber(std::string phoneNumber)
 void Contact::setDarkestSecret(std::string darkestSecret)
 {
     this->darkestSecret = darkestSecret;
+}
+
+// GETTERS
+std::string Contact::getFirstName()
+{
+    return this->firstName;
+}
+
+std::string Contact::getLastName()
+{
+    return this->lastName;
+}
+
+std::string Contact::getNickname()
+{
+    return this->nickname;
+}
+
+std::string Contact::getPhoneNumber()
+{
+    return this->phoneNumber;
+}
+
+std::string Contact::getDarkestSecret()
+{
+    return this->darkestSecret;
 }
