@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:04 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/05 21:40:06 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:41:40 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 PhoneBook::PhoneBook()
 {
     this->contactCount = 0;
+    this->oldestIndex = 0;
 }
 
 // Destructeur
@@ -36,7 +37,8 @@ void PhoneBook::addContact(Contact contact)
     }
     else
     {
-        this->contacts[0] = contact;
+        this->contacts[this->oldestIndex] = contact;
+        this->oldestIndex = (this->oldestIndex + 1) % 8;
     }
 }
 
