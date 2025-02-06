@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:04 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/06 16:41:40 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:30:00 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,14 @@ void PhoneBook::displayContact(int index)
 {
     if (index >= 0 && index < this->contactCount)
     {
-        std::cout << "First Name: " << this->contacts[index].getFirstName() << std::endl;
-        std::cout << "Last Name: " << this->contacts[index].getLastName() << std::endl;
-        std::cout << "Nickname: " << this->contacts[index].getNickname() << std::endl;
-        std::cout << "Phone Number: " << this->contacts[index].getPhoneNumber() << std::endl;
-        std::cout << "Darkest Secret: " << this->contacts[index].getDarkestSecret() << std::endl;
+        std::cout << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Nickname" << std::endl;
+        std::cout << std::setw(10) << index << "|"
+                  << std::setw(10) << this->contacts[index].getFirstName() << "|"
+                  << std::setw(10) << this->contacts[index].getLastName() << "|"
+                  << std::setw(10) << this->contacts[index].getNickname() << std::endl;
     }
     else
     {
