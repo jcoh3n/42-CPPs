@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:58:13 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/05 22:11:06 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:32:58 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ Account::~Account() {
     std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
-// METHODES 
 
 int Account::getNbAccounts() {
     return _nbAccounts;

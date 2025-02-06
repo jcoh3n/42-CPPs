@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:08 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/05 21:31:35 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:32:42 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Contact::Contact() {}
 // Destructeur
 Contact::~Contact() {}
 
-// SETTERS
 void Contact::setFirstName(std::string firstName)
 {
     this->firstName = firstName;
@@ -44,7 +43,6 @@ void Contact::setDarkestSecret(std::string darkestSecret)
     this->darkestSecret = darkestSecret;
 }
 
-// GETTERS
 std::string Contact::getFirstName()
 {
     return this->firstName;

@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:07 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/05 21:28:18 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:32:30 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ private:
     std::string darkestSecret;
 
 public:
-    Contact();  // Constructeur
-    ~Contact(); // Destructeur
+    Contact();
+    ~Contact();
 
     // LES SETTERS
     void setFirstName(std::string firstName);
@@ -37,7 +37,6 @@ public:
     void setPhoneNumber(std::string phoneNumber);
     void setDarkestSecret(std::string darkestSecret);
 
-    // LES GETTERS
     std::string getFirstName();
     std::string getLastName();
     std::string getNickname();

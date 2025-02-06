@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:38:04 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/06 18:30:00 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:31:43 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void PhoneBook::addContact(Contact contact)
     }
 }
 
-// Fonction utilitaire pour tronquer une chaîne
 std::string truncate(std::string str, size_t width)
 {
     if (str.length() > width)
@@ -67,7 +66,7 @@ void PhoneBook::displayContacts()
     }
 }
 
-// Afficher les détails d'un contact
+// Afficher un contact 
 void PhoneBook::displayContact(int index)
 {
     if (index >= 0 && index < this->contactCount)
