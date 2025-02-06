@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:08:02 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/03 14:28:48 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:25:46 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     {
         for (int j = 0; argv[i][j]; j++)
             std::cout << (char)toupper(argv[i][j]);
-        std::cout << std::endl;
     }
+    std::cout << std::endl;
     return (0);
 }
