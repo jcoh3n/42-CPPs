@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: j <j@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:01:50 by j                 #+#    #+#             */
-/*   Updated: 2025/02/18 16:02:05 by j                ###   ########.fr       */
+/*   Updated: 2025/02/19 12:51:39 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,18 @@
 #include <fstream>
 #include <string>
 
+class Harl
+{
+private:
+    void debug(void);
+    void info(void);
+    void warning(void);
+    void error(void);
+
+public:
+    Harl();
+    ~Harl();
+    void complain(std::string level);
+};
 
 #endif
