@@ -6,11 +6,11 @@
 #    By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 14:30:26 by jcohen            #+#    #+#              #
-#    Updated: 2025/02/16 22:37:15 by jcohen           ###   ########.fr        #
+#    Updated: 2025/02/19 13:54:15 by jcohen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = this_is_brain
 CXX = c++
 OBJ_FOLDER = obj
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

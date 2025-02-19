@@ -6,11 +6,11 @@
 #    By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 14:30:26 by jcohen            #+#    #+#              #
-#    Updated: 2025/02/16 22:59:05 by jcohen           ###   ########.fr        #
+#    Updated: 2025/02/19 13:58:23 by jcohen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = weapon
+NAME = unnecessary_violence
 CXX = c++
 OBJ_FOLDER = obj
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
