@@ -6,7 +6,7 @@
 /*   By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:57:26 by jcohen            #+#    #+#             */
-/*   Updated: 2025/02/20 16:05:39 by jcohen           ###   ########.fr       */
+/*   Updated: 2025/02/20 16:11:40 by jcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ public:
     float toFloat(void) const;
     int toInt(void) const;
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
