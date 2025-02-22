@@ -12,18 +12,15 @@ Fixed::Fixed (const float value) : value(roundf(value * (1 << bits))) {
     std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed (const Fixed &copy) {
+Fixed::Fixed (const Fixed &copy) : value(copy.value) {
     std::cout << "Copy constructor called" << std::endl;
-    *this = copy;  // Utilise l'opérateur d'affectation
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
-    {
         this->value = other.value;
-    }
     return (*this);
 }
 
