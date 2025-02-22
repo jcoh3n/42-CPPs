@@ -6,11 +6,11 @@
 #    By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 14:30:26 by jcohen            #+#    #+#              #
-#    Updated: 2025/02/19 14:52:20 by jcohen           ###   ########.fr        #
+#    Updated: 2025/02/21 14:57:33 by jcohen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mon_premier_canon
+NAME = on_peut_parler
 CXX = c++
 OBJ_FOLDER = obj
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
