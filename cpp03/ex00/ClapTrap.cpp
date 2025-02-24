@@ -4,11 +4,6 @@ ClapTrap::ClapTrap() : name("default"), HP(10), energyPoints(10), attackDamage(0
 
 ClapTrap::ClapTrap(std::string name) : name(name), HP(10), energyPoints(10), attackDamage(0) { std::cout << "ClapTrap " << name << " is created" << std::endl; }
 
-ClapTrap::ClapTrap(std::string name, int attackDamage) 
-    : name(name), HP(10), energyPoints(10), attackDamage(attackDamage) {
-    std::cout << "ClapTrap " << name << " is created with attack damage " << attackDamage << std::endl;
-}
-
 ClapTrap::ClapTrap(const ClapTrap &copy) : name(copy.name), HP(copy.HP), energyPoints(copy.energyPoints), attackDamage(copy.attackDamage) {}
 
 ClapTrap::~ClapTrap() {}

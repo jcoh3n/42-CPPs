@@ -15,7 +15,6 @@ private:
 public:
     ClapTrap();
     ClapTrap(std::string name);
-    ClapTrap(std::string name, int attackDamage);
     ClapTrap(const ClapTrap &copy);
     ~ClapTrap();
     void attack(const std::string &target);
