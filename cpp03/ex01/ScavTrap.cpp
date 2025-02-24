@@ -9,10 +9,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {}
 
-ScavTrap::~ScavTrap()
-{
-    std::cout << "ScavTrap " << this->getName() << " is destroyed" << std::endl;
-}
+ScavTrap::~ScavTrap() {}
 
 void ScavTrap::guardGate()
 {

@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(std::string name, int HP, int energyPoints, int attackDamage)
 
 ClapTrap::ClapTrap(const ClapTrap &copy) : name(copy.name), HP(copy.HP), energyPoints(copy.energyPoints), attackDamage(copy.attackDamage) {}
 
-ClapTrap::~ClapTrap() {}
+ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << this->getName() << " is destroyed" << std::endl; }
 
 void ClapTrap::attack(const std::string &target)
 {
