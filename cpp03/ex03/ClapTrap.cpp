@@ -47,7 +47,7 @@ void ClapTrap::takeDamage(unsigned int amount)
         return;
     }
     
-    if (amount >= this->HP) // Verification si il va mourir apres le coup
+    if (amount >= (unsigned int)this->HP) // Verification si il va mourir apres le coup
     {
         this->HP = 0;
         std::cout << "ClapTrap " << name << " takes " << amount << " points of damage and is destroyed!" << std::endl;

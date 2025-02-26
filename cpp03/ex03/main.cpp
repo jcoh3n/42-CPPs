@@ -1,20 +1,23 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main() {
-    // Création d'un ClapTrap
     std::cout << "----- Creating ClapTrap -----" << std::endl;
     ClapTrap clap("MAX");
     std::cout << std::endl;
 
-    // Création d'un ScavTrap
     std::cout << "----- Creating ScavTrap -----" << std::endl;
     ScavTrap scav("JOE");
     std::cout << std::endl;
 
     std::cout << "----- Creating FragTrap -----" << std::endl;
     FragTrap frag("BOB");
+    std::cout << std::endl;
+
+    std::cout << "----- Creating DiamondTrap -----" << std::endl;
+    DiamondTrap diamond("DIAMOND");
     std::cout << std::endl;
 
     std::cout << "----- Testing ClapTrap functions -----" << std::endl;
@@ -35,6 +38,15 @@ int main() {
     frag.takeDamage(20);
     frag.beRepaired(10);
     frag.highFivesGuys();
+    std::cout << std::endl;
+
+    std::cout << "----- Testing DiamondTrap functions -----" << std::endl;
+    diamond.attack("Target4");
+    diamond.highFivesGuys();
+    diamond.guardGate();
+    diamond.takeDamage(25);
+    diamond.beRepaired(15);
+    diamond.whoAmI();
     std::cout << std::endl;
 
     std::cout << "----- Destroying objects -----" << std::endl;
