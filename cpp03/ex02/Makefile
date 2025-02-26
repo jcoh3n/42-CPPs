@@ -6,7 +6,7 @@
 #    By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 14:30:26 by jcohen            #+#    #+#              #
-#    Updated: 2025/02/24 16:29:49 by jcohen           ###   ########.fr        #
+#    Updated: 2025/02/26 14:46:26 by jcohen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CXX = c++
 OBJ_FOLDER = obj
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:%.cpp=$(OBJ_FOLDER)/%.o)
-HEADERS = ClapTrap.hpp ScavTrap.hpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
 all: $(OBJ_FOLDER) $(NAME)
 
