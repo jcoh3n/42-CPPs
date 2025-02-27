@@ -13,14 +13,4 @@ public:
     virtual void makeSound() const;
 };
 
-class WrongCat : public WrongAnimal
-{
-public:
-    WrongCat();
-    virtual ~WrongCat();
-    WrongCat(const WrongCat &copy);
-    WrongCat &operator=(const WrongCat &cat);
-    virtual void makeSound() const;
-};
-
 #endif
