@@ -2,6 +2,8 @@
 
 Animal::Animal() : type("Animal") { std::cout << "Animal constructor called" << std::endl; }
 
+Animal::Animal(std::string type) : type(type) { std::cout << "Animal " << type << " constructor called" << std::endl; }
+
 Animal::~Animal() { std::cout << "Animal destructor called" << std::endl; }
 
 Animal::Animal(const Animal &copy) {

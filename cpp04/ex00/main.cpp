@@ -5,51 +5,41 @@
 
 int main()
 {
-    std::cout << "===== Basic Animal Tests =====" << std::endl;
+    std::cout << "===== Animal Tests =====" << std::endl;
     
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    // Tests avec des objets alloués sur la pile
+    Animal genericAnimal;
+    Animal genericAnimal2("Marin");
+    Dog myDog;
+    Cat myCat;
     
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    std::cout << "Generic Animal type: " << genericAnimal.getType() << std::endl; // "Animal"
+    std::cout << "Generic Animal2 type: " << genericAnimal2.getType() << std::endl; // "Marin"
+    std::cout << "My Dog type: " << myDog.getType() << std::endl; // "Dog"
+    std::cout << "My Cat type: " << myCat.getType() << std::endl; // "Cat"
     
-    i->makeSound(); // will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    std::cout << "Generic Animal sound: ";
+    genericAnimal.makeSound(); // "Animal sound"
     
-    delete meta;
-    delete j;
-    delete i;
+    std::cout << "My Dog sound: ";
+    myDog.makeSound(); // "Woof Woof"
+    
+    std::cout << "My Cat sound: ";
+    myCat.makeSound(); // "Meow Meow"
     
     std::cout << "\n===== Wrong Animal Tests =====" << std::endl;
     
-    const WrongAnimal* wrongAnimal = new WrongAnimal();
-    const WrongAnimal* wrongCat = new WrongCat();
+    WrongAnimal genericWrongAnimal;
+    WrongCat myWrongCat;
     
-    std::cout << wrongAnimal->getType() << " " << std::endl;
-    std::cout << wrongCat->getType() << " " << std::endl;
+    std::cout << "Generic WrongAnimal type: " << genericWrongAnimal.getType() << std::endl; // "WrongAnimal"
+    std::cout << "My WrongCat type: " << myWrongCat.getType() << std::endl; // "WrongCat"
     
-    wrongAnimal->makeSound();
-    wrongCat->makeSound(); // should output WrongAnimal sound, not WrongCat
+    std::cout << "Generic WrongAnimal sound: ";
+    genericWrongAnimal.makeSound(); // "WrongAnimal sound"
     
-    delete wrongAnimal;
-    delete wrongCat;
-    
-    std::cout << "\n===== Direct Animal Tests =====" << std::endl;
-    
-    // Testing direct objects, not pointers
-    Animal directAnimal;
-    Dog directDog;
-    Cat directCat;
-    
-    std::cout << directAnimal.getType() << " " << std::endl;
-    std::cout << directDog.getType() << " " << std::endl;
-    std::cout << directCat.getType() << " " << std::endl;
-    
-    directAnimal.makeSound();
-    directDog.makeSound();
-    directCat.makeSound();
+    std::cout << "My WrongCat sound: ";
+    myWrongCat.makeSound(); // "WrongAnimal sound" (pas de polymorphisme ici)
     
     std::cout << "\n===== End of Tests =====" << std::endl;
     
