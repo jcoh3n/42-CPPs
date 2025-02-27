@@ -1,13 +1,14 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
 int main()
 {
     std::cout << "===== Animal Tests =====" << std::endl;
     
-    // Tests avec des objets alloués sur la pile
     Animal genericAnimal;
     Animal genericAnimal2("Marin");
     Dog myDog;
@@ -39,9 +40,9 @@ int main()
     genericWrongAnimal.makeSound(); // "WrongAnimal sound"
     
     std::cout << "My WrongCat sound: ";
-    myWrongCat.makeSound(); // "WrongAnimal sound" (pas de polymorphisme ici)
+    myWrongCat.makeSound(); // "WrongAnimal sound" 
     
     std::cout << "\n===== End of Tests =====" << std::endl;
-
+    
     return 0;
 }
