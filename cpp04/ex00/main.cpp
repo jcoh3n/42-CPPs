@@ -7,40 +7,30 @@
 
 int main()
 {
-    std::cout << "===== Animal Tests =====" << std::endl;
+    std::cout << "===== Animal Tests (Polymorphic Behavior) =====" << std::endl;
     
-    Animal genericAnimal;
-    Animal genericAnimal2("Marin");
-    Dog myDog;
-    Cat myCat;
+    // Polymorphisme avec Animal, Dog et Cat
+    Animal* animal1 = new Dog();
+    Animal* animal2 = new Cat();
     
-    std::cout << "Generic Animal type: " << genericAnimal.getType() << std::endl; // "Animal"
-    std::cout << "Generic Animal2 type: " << genericAnimal2.getType() << std::endl; // "Marin"
-    std::cout << "My Dog type: " << myDog.getType() << std::endl; // "Dog"
-    std::cout << "My Cat type: " << myCat.getType() << std::endl; // "Cat"
+    std::cout << "Animal1 (Dog) sound: ";
+    animal1->makeSound(); // "Woof Woof"
     
-    std::cout << "Generic Animal sound: ";
-    genericAnimal.makeSound(); // "Animal sound"
+    std::cout << "Animal2 (Cat) sound: ";
+    animal2->makeSound(); // "Meow Meow"
     
-    std::cout << "My Dog sound: ";
-    myDog.makeSound(); // "Woof Woof"
+    delete animal1;
+    delete animal2;
     
-    std::cout << "My Cat sound: ";
-    myCat.makeSound(); // "Meow Meow"
+    std::cout << "\n===== Wrong Animal Tests (Non-Polymorphic Behavior) =====" << std::endl;
     
-    std::cout << "\n===== Wrong Animal Tests =====" << std::endl;
+    // Non-polymorphisme avec WrongAnimal et WrongCat
+    WrongAnimal* wrongAnimal = new WrongCat();
     
-    WrongAnimal genericWrongAnimal;
-    WrongCat myWrongCat;
+    std::cout << "WrongAnimal (WrongCat) sound: ";
+    wrongAnimal->makeSound(); // "WrongAnimal sound" (pas "WrongCat sound")
     
-    std::cout << "Generic WrongAnimal type: " << genericWrongAnimal.getType() << std::endl; // "WrongAnimal"
-    std::cout << "My WrongCat type: " << myWrongCat.getType() << std::endl; // "WrongCat"
-    
-    std::cout << "Generic WrongAnimal sound: ";
-    genericWrongAnimal.makeSound(); // "WrongAnimal sound"
-    
-    std::cout << "My WrongCat sound: ";
-    myWrongCat.makeSound(); // "WrongAnimal sound" 
+    delete wrongAnimal;
     
     std::cout << "\n===== End of Tests =====" << std::endl;
     
