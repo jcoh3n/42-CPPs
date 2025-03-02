@@ -6,18 +6,18 @@
 #    By: jcohen <jcohen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 14:30:26 by jcohen            #+#    #+#              #
-#    Updated: 2025/03/02 14:56:37 by jcohen           ###   ########.fr        #
+#    Updated: 2025/03/02 15:36:01 by jcohen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = AFORM
+NAME = AForm
 CXX = c++
 OBJ_FOLDER = obj
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS = $(SRCS:%.cpp=$(OBJ_FOLDER)/%.o)
-HEADERS = Bureaucrat.hpp Form.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 all: $(OBJ_FOLDER) $(NAME)
 

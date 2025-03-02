@@ -27,7 +27,7 @@ public:
     int getExecGrade() const;
     
     void beSigned(Bureaucrat &bureaucrat);
-    virtual void execute(Bureaucrat const &executor) const = 0;
+    virtual void execute(Bureaucrat const &executor) const;
 
     class AFormGradeTooHighException : public std::exception
     {

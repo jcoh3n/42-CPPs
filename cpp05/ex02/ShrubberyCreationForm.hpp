@@ -14,7 +14,7 @@ public:
     ~ShrubberyCreationForm();
     void execute(Bureaucrat const &executor) const;
 
-    class ShrubberyCreationFormFileException : public std::exception
+    class FileOpenException : public std::exception
     {
     public:
         virtual const char *what() const throw();

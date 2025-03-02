@@ -9,17 +9,26 @@ ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreatio
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (!getSignedAForm())
-        throw AForm::FormNotSignedException();
-    if (executor.getGrade() > getExecGrade())
-        throw AForm::AFormGradeTooLowException();
-    std::ofstream file(target + "_shrubbery");
+    AForm::execute(executor);
+    std::ofstream file((target + "_shrubbery").c_str());
     if (!file.is_open())
-        throw ShrubberyCreationFormFileException();
-    file << "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n \\  _-     -_  /\n   ~  \\\\ //  ~\n_- -   | | _- _\n  _ -  | |   -_\n      // \\\n";
+        throw FileOpenException();
+
+    file << "     ccee88oo" << std::endl;
+    file << "  C8O8O8Q8PoOb o8oo" << std::endl;
+    file << " dOB69QO8PdUOpugoO9bD" << std::endl;
+    file << "CgggbU8OU qOp qOdoUOdcb" << std::endl;
+    file << "    6OuU  /p u gcoUodpP" << std::endl;
+    file << "      \\\\\\//  /douUP" << std::endl;
+    file << "        \\\\\\////" << std::endl;
+    file << "         |||/\\" << std::endl;
+    file << "         |||\\/" << std::endl;
+    file << "         |||||" << std::endl;
+    file << "   .....//||||\\...." << std::endl;
+    
     file.close();
     std::cout << "Shrubbery has been created in " << target + "_shrubbery" << std::endl;
 }
 
 
-const char *ShrubberyCreationForm::ShrubberyCreationFormFileException::what() const throw() { return "Cannot open file"; }
+const char *ShrubberyCreationForm::FileOpenException::what() const throw() { return "File open failed"; }
