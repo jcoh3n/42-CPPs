@@ -27,8 +27,6 @@ public :
     
     void signForm(AForm &form);
     void executeForm(AForm const &form);
-
-    // CLASS D'EXCEPTIONS | BUT -> GERER LES EXCEPTIONS LIEES AUX BUREAUCRATES
     class BureaucratGradeTooHighException : public std::exception 
     {
     public :
