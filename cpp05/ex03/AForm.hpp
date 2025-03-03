@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-// Forward declaration of Bureaucrat class
 class Bureaucrat;
 
 class AForm 

@@ -5,7 +5,7 @@
 #include <fstream>
 #include "AForm.hpp"
 
-class Bureaucrat; // Forward declaration if needed
+class Bureaucrat;
 
 class PresidentialPardonForm : public AForm
 {

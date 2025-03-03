@@ -5,7 +5,6 @@
 #include <string>
 #include <cctype>
 
-// Forward declarations
 class AForm;
 class ShrubberyCreationForm;
 class RobotomyRequestForm;

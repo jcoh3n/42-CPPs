@@ -50,9 +50,10 @@ AForm *Intern::makeForm(std::string formName, std::string target)
     for (size_t i = 0; i < lowerFormName.length(); i++)
         lowerFormName[i] = std::tolower(lowerFormName[i]);
 
+    // Tableau de pointeurs de fonctions membres de la classe Intern
     AForm *(Intern::*formCreators[3])(std::string) = {&Intern::createShrubberyCreationForm, &Intern::createRobotomyRequestForm, &Intern::createPresidentialPardonForm};
     std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-
+    
     for (int i = 0; i < 3; i++)
     {
         if (lowerFormName == formNames[i])
