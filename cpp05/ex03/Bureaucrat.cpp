@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150) { std::cout << "Bureaucrat default constructor" << std::endl; }
 
@@ -22,8 +23,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat destructor" << std::endl; }
 
-
-const char *Bureaucrat::BureaucratGradeTooHighException::what() const throw() { return  "Grade trop haut pour le bureaucrate !"; }
+const char *Bureaucrat::BureaucratGradeTooHighException::what() const throw() { return "Grade trop haut pour le bureaucrate !"; }
 
 const char *Bureaucrat::BureaucratGradeTooLowException::what() const throw() { return "Grade trop bas pour le bureaucrate !"; }
 

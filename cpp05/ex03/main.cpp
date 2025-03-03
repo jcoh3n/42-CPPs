@@ -3,214 +3,251 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <iostream>
+#include <string>
 
+// Fonction helper pour afficher les titres de section
+void displayTitle(const std::string& title) {
+    std::cout << "\n=====================================\n"
+              << "=== " << title << " ===\n"
+              << "=====================================\n" << std::endl;
+}
+
+// Test de la création des bureaucrates
 void testBureaucratCreation() {
-    std::cout << "\n=== Testing Bureaucrat Creation ===\n" << std::endl;
+    displayTitle("Test de création des bureaucrates");
     
     try {
-        std::cout << "Creating bureaucrat with valid grade (42):" << std::endl;
+        std::cout << "Création d'un bureaucrate avec un grade valide (42):" << std::endl;
         Bureaucrat bob("Bob", 42);
         std::cout << bob << std::endl;
     } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Erreur: " << e.what() << std::endl;
     }
     
     try {
-        std::cout << "\nCreating bureaucrat with too high grade (0):" << std::endl;
+        std::cout << "\nCréation d'un bureaucrate avec un grade trop élevé (0):" << std::endl;
         Bureaucrat john("John", 0);
         std::cout << john << std::endl;
     } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Erreur: " << e.what() << std::endl;
     }
     
     try {
-        std::cout << "\nCreating bureaucrat with too low grade (151):" << std::endl;
+        std::cout << "\nCréation d'un bureaucrate avec un grade trop bas (151):" << std::endl;
         Bureaucrat alice("Alice", 151);
         std::cout << alice << std::endl;
     } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-    
-    try {
-        std::cout << "\nTesting increment/decrement:" << std::endl;
-        Bureaucrat dave("Dave", 5);
-        std::cout << "Initial: " << dave << std::endl;
-        
-        dave.incrementGrade();
-        std::cout << "After increment: " << dave << std::endl;
-        
-        dave.decrementGrade();
-        std::cout << "After decrement: " << dave << std::endl;
-        
-        // Test incrementing beyond the limit
-        Bureaucrat maxGrade("Max", 1);
-        std::cout << "Max grade bureaucrat: " << maxGrade << std::endl;
-        std::cout << "Trying to increment beyond limit:" << std::endl;
-        maxGrade.incrementGrade();
-    } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Erreur: " << e.what() << std::endl;
     }
 }
 
-void testShrubberyForm() {
-    std::cout << "\n=== Testing ShrubberyCreationForm ===\n" << std::endl;
+// Test de l'Intern qui crée des formulaires
+void testInternFormCreation() {
+    displayTitle("Test de création de formulaires par l'Intern");
     
-    try {
-        // Create form and bureaucrats with different grades
-        ShrubberyCreationForm form("garden");
-        Bureaucrat highRank("Director", 1);
-        Bureaucrat midRank("Manager", 100);
-        Bureaucrat lowRank("Intern", 145);
-        Bureaucrat tooLowRank("Visitor", 146);
-        
-        std::cout << form << std::endl;
-        std::cout << highRank << std::endl;
-        std::cout << midRank << std::endl;
-        std::cout << lowRank << std::endl;
-        std::cout << tooLowRank << std::endl;
-        
-        // Test signing permissions
-        std::cout << "\nTesting signing permissions:" << std::endl;
-        tooLowRank.signForm(form);  // Should fail (grade too low)
-        lowRank.signForm(form);     // Should succeed (just enough grade)
-        
-        // Test execution permissions
-        std::cout << "\nTesting execution permissions:" << std::endl;
-        tooLowRank.executeForm(form);  // Should fail (grade too low)
-        midRank.executeForm(form);     // Should succeed
-        highRank.executeForm(form);    // Should succeed
-        
-    } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
-    }
-}
-
-void testRobotomyForm() {
-    std::cout << "\n=== Testing RobotomyRequestForm ===\n" << std::endl;
+    Intern intern;
+    AForm* form = NULL;
     
+    // Test de création d'un formulaire ShrubberyCreation
     try {
-        // Create form and bureaucrats with different grades
-        RobotomyRequestForm form("Bender");
-        Bureaucrat highRank("CEO", 1);
-        Bureaucrat midRank("Assistant", 45);
-        Bureaucrat lowRank("Secretary", 72);
-        Bureaucrat tooLowRank("Temp", 73);
-        
-        std::cout << form << std::endl;
-        
-        // Test signing permissions
-        std::cout << "\nTesting signing permissions:" << std::endl;
-        tooLowRank.signForm(form);  // Should fail (grade too low)
-        lowRank.signForm(form);     // Should succeed (just enough grade)
-        
-        // Test execution permissions
-        std::cout << "\nTesting execution permissions:" << std::endl;
-        lowRank.executeForm(form);  // Should fail (grade too low for execution)
-        midRank.executeForm(form);  // Should succeed
-        highRank.executeForm(form); // Should succeed
-        
-        // Try multiple robotomies to see randomness
-        std::cout << "\nMultiple robotomy attempts:" << std::endl;
-        RobotomyRequestForm form2("C3PO");
-        highRank.signForm(form2);
-        for (int i = 0; i < 5; i++) {
-            highRank.executeForm(form2);
+        std::cout << "Création d'un formulaire ShrubberyCreation:" << std::endl;
+        form = intern.makeForm("shrubbery creation", "jardin");
+        if (form) {
+            std::cout << *form << std::endl;
+            delete form;
+            form = NULL;
         }
-        
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Erreur: " << e.what() << std::endl;
+        if (form) {
+            delete form;
+            form = NULL;
+        }
+    }
+    
+    // Test de création d'un formulaire RobotomyRequest
+    try {
+        std::cout << "\nCréation d'un formulaire RobotomyRequest:" << std::endl;
+        form = intern.makeForm("robotomy request", "Bender");
+        if (form) {
+            std::cout << *form << std::endl;
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
+    } catch (std::exception &e) {
+        std::cout << "Erreur: " << e.what() << std::endl;
+        if (form) {
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
+    }
+    
+    // Test de création d'un formulaire PresidentialPardon
+    try {
+        std::cout << "\nCréation d'un formulaire PresidentialPardon:" << std::endl;
+        form = intern.makeForm("presidential pardon", "Zaphod");
+        if (form) {
+            std::cout << *form << std::endl;
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
+    } catch (std::exception &e) {
+        std::cout << "Erreur: " << e.what() << std::endl;
+        if (form) {
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
+    }
+    
+    // Test de création d'un formulaire inexistant
+    try {
+        std::cout << "\nTentative de création d'un formulaire inexistant:" << std::endl;
+        form = intern.makeForm("unknown form", "target");
+        if (form) {
+            std::cout << *form << std::endl;
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
+    } catch (std::exception &e) {
+        std::cout << "Erreur: " << e.what() << std::endl;
+        if (form) {
+            delete form;
+            form = NULL; // Changed nullptr to NULL
+        }
     }
 }
 
-void testPresidentialPardonForm() {
-    std::cout << "\n=== Testing PresidentialPardonForm ===\n" << std::endl;
+// Test du cycle complet: création, signature et exécution des formulaires
+void testFormWorkflow() {
+    displayTitle("Test du cycle complet des formulaires");
     
+    Intern intern;
+    Bureaucrat boss("Le PDG", 1);              // Peut tout faire
+    Bureaucrat manager("Le Manager", 45);      // Peut signer tous les formulaires, mais exécuter seulement Robotomy et Shrubbery
+    Bureaucrat employee("L'Employé", 140);     // Peut signer seulement Shrubbery
+
+    std::cout << boss << std::endl;
+    std::cout << manager << std::endl;
+    std::cout << employee << std::endl;
+    
+    // Test ShrubberyCreationForm
     try {
-        // Create form and bureaucrats with different grades
-        PresidentialPardonForm form("Arthur Dent");
-        Bureaucrat president("President", 1);
-        Bureaucrat vicePresident("Vice President", 5);
-        Bureaucrat secretary("Secretary", 25);
-        Bureaucrat tooLowRank("Citizen", 26);
+        std::cout << "\n--- Test ShrubberyCreationForm ---" << std::endl;
+        AForm* shrubForm = intern.makeForm("shrubbery creation", "maison");
         
-        std::cout << form << std::endl;
+        // Tentative de signature par différents bureaucrates
+        employee.signForm(*shrubForm);
         
-        // Test signing permissions
-        std::cout << "\nTesting signing permissions:" << std::endl;
-        tooLowRank.signForm(form);  // Should fail (grade too low)
-        secretary.signForm(form);   // Should succeed (just enough grade)
+        // Tentative d'exécution par différents bureaucrates
+        employee.executeForm(*shrubForm);
+        manager.executeForm(*shrubForm);
+        boss.executeForm(*shrubForm);
         
-        // Test execution permissions
-        std::cout << "\nTesting execution permissions:" << std::endl;
-        secretary.executeForm(form);  // Should fail (grade too low for execution)
-        vicePresident.executeForm(form);  // Should succeed
-        president.executeForm(form);      // Should succeed
-        
+        delete shrubForm;
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Erreur inattendue: " << e.what() << std::endl;
+    }
+    
+    // Test RobotomyRequestForm
+    try {
+        std::cout << "\n--- Test RobotomyRequestForm ---" << std::endl;
+        AForm* robotForm = intern.makeForm("robotomy request", "C3PO");
+        
+        // Tentative de signature par différents bureaucrates
+        employee.signForm(*robotForm);  // Devrait échouer
+        manager.signForm(*robotForm);   // Devrait réussir
+        
+        // Tentative d'exécution par différents bureaucrates
+        employee.executeForm(*robotForm);  // Devrait échouer
+        manager.executeForm(*robotForm);   // Devrait réussir
+        
+        delete robotForm;
+    } catch (std::exception &e) {
+        std::cout << "Erreur inattendue: " << e.what() << std::endl;
+    }
+    
+    // Test PresidentialPardonForm
+    try {
+        std::cout << "\n--- Test PresidentialPardonForm ---" << std::endl;
+        AForm* pardonForm = intern.makeForm("presidential pardon", "Arthur Dent");
+        
+        // Tentative de signature par différents bureaucrates
+        employee.signForm(*pardonForm);  // Devrait échouer
+        manager.signForm(*pardonForm);   // Devrait échouer
+        boss.signForm(*pardonForm);      // Devrait réussir
+        
+        // Tentative d'exécution par différents bureaucrates
+        employee.executeForm(*pardonForm);  // Devrait échouer
+        manager.executeForm(*pardonForm);   // Devrait échouer
+        boss.executeForm(*pardonForm);      // Devrait réussir
+        
+        delete pardonForm;
+    } catch (std::exception &e) {
+        std::cout << "Erreur inattendue: " << e.what() << std::endl;
     }
 }
 
-void testUnsignedFormExecution() {
-    std::cout << "\n=== Testing Execution of Unsigned Forms ===\n" << std::endl;
+// Test des cas d'erreur spécifiques
+void testEdgeCases() {
+    displayTitle("Test des cas particuliers");
     
+    Intern intern;
+    Bureaucrat boss("Le PDG", 1);
+    
+    // Tentative d'exécution d'un formulaire non signé
     try {
-        // Create forms and high-level bureaucrat
-        ShrubberyCreationForm shrub("park");
-        RobotomyRequestForm robot("R2D2");
-        PresidentialPardonForm pardon("Ford Prefect");
-        Bureaucrat president("President", 1);
-        
-        // Try executing without signing
-        std::cout << "Attempting to execute unsigned forms:" << std::endl;
-        president.executeForm(shrub);
-        president.executeForm(robot);
-        president.executeForm(pardon);
-        
+        std::cout << "Tentative d'exécution d'un formulaire non signé:" << std::endl;
+        AForm* form = intern.makeForm("presidential pardon", "Ford Prefect");
+        boss.executeForm(*form);  // Devrait échouer car non signé
+        delete form;
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Erreur: " << e.what() << std::endl;
     }
-}
-
-void testGradeLimitsEdgeCases() {
-    std::cout << "\n=== Testing Edge Cases ===\n" << std::endl;
     
+    // Test de sensibilité à la casse et aux espaces
     try {
-        // Create bureaucrats at grade boundaries
-        Bureaucrat highest("Highest", 1);
-        Bureaucrat lowest("Lowest", 150);
-        
-        std::cout << highest << std::endl;
-        std::cout << lowest << std::endl;
-        
-        // Test limitations
-        std::cout << "\nTrying to increment highest grade bureaucrat:" << std::endl;
-        highest.incrementGrade();
+        std::cout << "\nTest de sensibilité à la casse et aux espaces:" << std::endl;
+        AForm* form1 = intern.makeForm("ROBOTOMY REQUEST", "R2D2");  // Majuscules
+        if (form1) {
+            std::cout << "Formulaire créé malgré les majuscules!" << std::endl;
+            delete form1;
+        }
     } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Erreur (attendue): " << e.what() << std::endl;
     }
     
     try {
-        Bureaucrat lowest("Lowest", 150);
-        std::cout << "\nTrying to decrement lowest grade bureaucrat:" << std::endl;
-        lowest.decrementGrade();
+        AForm* form2 = intern.makeForm("   shrubbery creation   ", "parc");  // Espaces supplémentaires
+        if (form2) {
+            std::cout << "Formulaire créé malgré les espaces supplémentaires!" << std::endl;
+            delete form2;
+        }
     } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Erreur (attendue): " << e.what() << std::endl;
+    }
+    
+    // Test avec une cible vide
+    try {
+        std::cout << "\nTest avec une cible vide:" << std::endl;
+        AForm* form = intern.makeForm("presidential pardon", "");
+        if (form) {
+            std::cout << *form << std::endl;
+            delete form;
+        }
+    } catch (std::exception &e) {
+        std::cout << "Erreur: " << e.what() << std::endl;
     }
 }
 
 int main() {
-    // Seed random for robotomy
     srand(time(NULL));
     
-    // Run all tests
     testBureaucratCreation();
-    testShrubberyForm();
-    testRobotomyForm();
-    testPresidentialPardonForm();
-    testUnsignedFormExecution();
-    testGradeLimitsEdgeCases();
+    testInternFormCreation();
+    testFormWorkflow();
+    testEdgeCases();
     
     return 0;
 }

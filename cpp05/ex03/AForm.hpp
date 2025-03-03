@@ -1,13 +1,10 @@
-#ifndef AForm_HPP
-#define AForm_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <string>
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
+// Forward declaration of Bureaucrat class
 class Bureaucrat;
 
 class AForm 

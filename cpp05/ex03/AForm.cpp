@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm() : name("default"), signedAForm(false), signGrade(150), execGrade(150) { std::cout << "AForm default constructor" << std::endl; }
 
@@ -49,7 +50,7 @@ void AForm::execute(Bureaucrat const &executor) const
 }
 
 
-const char *AForm::AFormGradeTooHighException::what() const throw() { return  "Grade trop haut pour le AFormulaire !"; }
+const char *AForm::AFormGradeTooHighException::what() const throw() { return "Grade trop haut pour le AFormulaire !"; }
 
 const char *AForm::AFormGradeTooLowException::what() const throw() { return "Grade trop bas pour signer/exécuter le AFormulaire !"; }
 
@@ -63,4 +64,3 @@ std::ostream &operator<<(std::ostream &out, const AForm &AForm)
         << ", is signed: " << (AForm.getSignedAForm() ? "yes" : "no");
     return out;
 }
-

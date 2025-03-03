@@ -3,9 +3,12 @@
 
 #include <iostream>
 #include <string>
-#include "AForm.hpp"
 
-
+// Forward declarations
+class AForm;
+class ShrubberyCreationForm;
+class RobotomyRequestForm;
+class PresidentialPardonForm;
 
 class Intern
 {
@@ -25,7 +28,6 @@ public:
     public:
         virtual const char *what() const throw();
     };
-
 };
 
 #endif

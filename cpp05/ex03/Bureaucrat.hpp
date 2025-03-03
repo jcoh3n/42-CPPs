@@ -3,16 +3,16 @@
 
 #include <iostream>
 #include <string>
-#include "AForm.hpp"
 
+// Forward declaration of AForm
 class AForm;
 
 class Bureaucrat
 {
-private :
+private:
     std::string const name;
     int grade;
-public :
+public:
     Bureaucrat();
     Bureaucrat(std::string const name, int grade);
     Bureaucrat(Bureaucrat const &other);
@@ -27,19 +27,20 @@ public :
     
     void signForm(AForm &form);
     void executeForm(AForm const &form);
+    
     class BureaucratGradeTooHighException : public std::exception 
     {
-    public :
+    public:
         virtual const char *what() const throw();
     };
+    
     class BureaucratGradeTooLowException : public std::exception
     {
-    public :
+    public:
         virtual const char *what() const throw();
     };
-
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat&bureaucrat);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
 #endif
