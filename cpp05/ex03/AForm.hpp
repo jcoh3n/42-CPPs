@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 class Bureaucrat;
 
