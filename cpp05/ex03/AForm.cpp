@@ -50,12 +50,13 @@ void AForm::execute(Bureaucrat const &executor) const
 }
 
 
-const char *AForm::AFormGradeTooHighException::what() const throw() { return "Grade trop haut pour le AFormulaire !"; }
+const char *AForm::AFormGradeTooHighException::what() const throw() { return "Grade trop haut pour le form !"; }
 
-const char *AForm::AFormGradeTooLowException::what() const throw() { return "Grade trop bas pour signer/exécuter le AFormulaire !"; }
+const char *AForm::AFormGradeTooLowException::what() const throw() { return "Grade trop bas pour signer/exécuter le form !"; }
 
-const char *AForm::FormNotSignedException::what() const throw() { return "Le formulaire n'est pas signé !"; }
+const char *AForm::FormNotSignedException::what() const throw() { return "Form n'est pas signé !"; }
 
+const char *AForm::EmptyTargetException::what() const throw() { return "Target cannot be empty"; }
 
 std::ostream &operator<<(std::ostream &out, const AForm &AForm)
 {

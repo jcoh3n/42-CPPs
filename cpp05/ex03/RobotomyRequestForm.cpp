@@ -2,6 +2,8 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
+    if (target.empty())
+        throw AForm::EmptyTargetException();
     std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
 

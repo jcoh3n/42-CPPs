@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>
 
 // Forward declarations
 class AForm;

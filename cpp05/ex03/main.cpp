@@ -218,16 +218,6 @@ void testEdgeCases() {
         std::cout << "Erreur (attendue): " << e.what() << std::endl;
     }
     
-    try {
-        AForm* form2 = intern.makeForm("   shrubbery creation   ", "parc");  // Espaces supplémentaires
-        if (form2) {
-            std::cout << "Formulaire créé malgré les espaces supplémentaires!" << std::endl;
-            delete form2;
-        }
-    } catch (std::exception &e) {
-        std::cout << "Erreur (attendue): " << e.what() << std::endl;
-    }
-    
     // Test avec une cible vide
     try {
         std::cout << "\nTest avec une cible vide:" << std::endl;

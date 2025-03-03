@@ -40,23 +40,22 @@ AForm *Intern::createPresidentialPardonForm(std::string target)
 
 AForm *Intern::makeForm(std::string formName, std::string target)
 {
-    // Tableau de pointeurs sur fonctions membres de la classe Intern
-    if (formName.empty())
+    if (formName.empty() || target.empty())
     {
-        std::cout << "Intern cannot create form: form name is empty" << std::endl;
+        std::cout << "Intern cannot create form: empty parameters" << std::endl;
         throw FormNotFoundException();
     }
-    if (target.empty())
-    {
-        std::cout << "Intern cannot create " << formName << ": target is empty" << std::endl;
-        throw FormNotFoundException();
-    }
+
+    std::string lowerFormName = formName;
+    for (size_t i = 0; i < lowerFormName.length(); i++)
+        lowerFormName[i] = std::tolower(lowerFormName[i]);
+
     AForm *(Intern::*formCreators[3])(std::string) = {&Intern::createShrubberyCreationForm, &Intern::createRobotomyRequestForm, &Intern::createPresidentialPardonForm};
     std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
     for (int i = 0; i < 3; i++)
     {
-        if (formName == formNames[i])
+        if (lowerFormName == formNames[i])
         {
             std ::cout << "Intern creates " << formName << std::endl;
             return (this->*formCreators[i])(target);

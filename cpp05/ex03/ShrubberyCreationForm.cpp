@@ -2,6 +2,8 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
+    if (target.empty())
+        throw AForm::EmptyTargetException();
     std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
@@ -31,4 +33,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 }
 
 
-const char *ShrubberyCreationForm::FileOpenException::what() const throw() { return "File open failed"; }
+const char *ShrubberyCreationForm::FileOpenException::what() const throw() { return "Failed to open file!"; }

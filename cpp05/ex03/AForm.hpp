@@ -44,6 +44,12 @@ public:
     public:
         virtual const char *what() const throw();
     };
+
+    class EmptyTargetException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &AForm);
