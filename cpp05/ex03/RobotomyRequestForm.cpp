@@ -4,15 +4,15 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 {
     if (target.empty())
         throw AForm::EmptyTargetException();
-    std::cout << "RobotomyRequestForm constructor called" << std::endl;
+    srand(time(NULL));
 }
 
-RobotomyRequestForm::~RobotomyRequestForm() { std::cout << "RobotomyRequestForm destructor called" << std::endl; }
+RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     AForm::execute(executor);
-    std::cout << "* drilling noises *";
+    std::cout << "* drilling noises *" << std::endl;
     if (rand() % 2)
         std::cout << target << " has been robotomized successfully" << std::endl;
     else

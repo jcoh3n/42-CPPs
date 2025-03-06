@@ -1,17 +1,16 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
-{
-    std::cout << "ShrubberyCreationForm constructor called" << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target) {}
 
-ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm destructor called" << std::endl; }
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     AForm::execute(executor);
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file.is_open())
+        throw FileOpenException();
+    if (file.fail())
         throw FileOpenException();
 
     file << "     ccee88oo" << std::endl;

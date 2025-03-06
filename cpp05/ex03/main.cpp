@@ -232,8 +232,7 @@ void testEdgeCases() {
 }
 
 int main() {
-    srand(time(NULL));
-    
+
     testBureaucratCreation();
     testInternFormCreation();
     testFormWorkflow();

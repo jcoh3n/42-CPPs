@@ -1,14 +1,13 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-Bureaucrat::Bureaucrat() : name("default"), grade(150) { std::cout << "Bureaucrat default constructor" << std::endl; }
+Bureaucrat::Bureaucrat() : name("default"), grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name)
 {
     if (grade < 1) throw BureaucratGradeTooHighException();
     if (grade > 150) throw BureaucratGradeTooLowException();
     this->grade = grade;
-    std::cout << "Bureaucrat constructor with parameters" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : name(other.name), grade(other.grade) { std::cout << "Bureaucrat copy constructor" << std::endl; }
@@ -21,7 +20,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
     return *this;
 }
 
-Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat destructor" << std::endl; }
+Bureaucrat::~Bureaucrat() {}
 
 const char *Bureaucrat::BureaucratGradeTooHighException::what() const throw() { return "Grade trop haut pour le bureaucrate !"; }
 
@@ -47,8 +46,12 @@ void Bureaucrat::signForm(AForm &form)
 {
     try
     {
+        bool signedForm = form.getSignedAForm();
         form.beSigned(*this);
-        std::cout << name << " signed " << form.getName() << std::endl;
+       if (!signedForm)
+            std::cout << name << " signed " << form.getName() << std::endl;
+        else
+            std::cout << name << " tried to sign " << form.getName() << ", but it was already signed." << std::endl;
     }
     catch (std::exception &e)
     {

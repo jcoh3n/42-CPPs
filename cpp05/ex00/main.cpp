@@ -37,7 +37,7 @@ int main()
     {
         // Test 5 : Création d'un bureaucrate avec un grade invalide (trop bas)
         std::cout << "\n--- Test 5 : Création d'un bureaucrate avec un grade invalide (trop bas) ---" << std::endl;
-        Bureaucrat b3("Charlie", 151); // Cela va lever une exception GradeTooLowException
+        Bureaucrat b3("Charlie", 151); // --> GradeTooLowException
     }
     catch (const Bureaucrat::GradeTooHighException &e)
     {

@@ -73,6 +73,20 @@ int main()
     {
         std::cout << "Erreur : " << e.what() << std::endl;
     }
+
+    try {
+        // Test 6 : Un bureaucrate signe un formulaire déjà signé
+        std::cout << "\n--- Test 6 : Un bureaucrate signe un formulaire déjà signé ---" << std::endl;
+        Bureaucrat bureaucrat("Charlie", 50);
+        Form form("Formulaire C", 75, 50);
+    
+        bureaucrat.signForm(form); // Signe le formulaire
+        bureaucrat.signForm(form); // Tente de signer à nouveau
+    }
+    catch (const std::exception &e) {
+        std::cout << "Erreur : " << e.what() << std::endl;
+    }
+    
     std::cout << std::endl;
 
     return 0;

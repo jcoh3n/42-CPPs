@@ -57,32 +57,33 @@ void testShrubberyForm() {
     std::cout << "\n=== Testing ShrubberyCreationForm ===\n" << std::endl;
     
     try {
-        // Create form and bureaucrats with different grades
+        
         ShrubberyCreationForm form("garden");
         Bureaucrat highRank("Director", 1);
         Bureaucrat midRank("Manager", 100);
         Bureaucrat lowRank("Intern", 145);
         Bureaucrat tooLowRank("Visitor", 146);
         
-        std::cout << form << std::endl;
-        std::cout << highRank << std::endl;
-        std::cout << midRank << std::endl;
-        std::cout << lowRank << std::endl;
-        std::cout << tooLowRank << std::endl;
+        std::cout << "\n--- Form Details ---\n" << form << std::endl;
+        std::cout << "\n--- Bureaucrats ---\n" 
+                  << highRank << "\n" 
+                  << midRank << "\n" 
+                  << lowRank << "\n" 
+                  << tooLowRank << std::endl;
         
         // Test signing permissions
-        std::cout << "\nTesting signing permissions:" << std::endl;
+        std::cout << "\n--- Testing Signing Permissions ---\n" << std::endl;
         tooLowRank.signForm(form);  // Should fail (grade too low)
         lowRank.signForm(form);     // Should succeed (just enough grade)
         
         // Test execution permissions
-        std::cout << "\nTesting execution permissions:" << std::endl;
+        std::cout << "\n--- Testing Execution Permissions ---\n" << std::endl;
         tooLowRank.executeForm(form);  // Should fail (grade too low)
         midRank.executeForm(form);     // Should succeed
         highRank.executeForm(form);    // Should succeed
         
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
@@ -119,7 +120,7 @@ void testRobotomyForm() {
         }
         
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
@@ -148,7 +149,7 @@ void testPresidentialPardonForm() {
         president.executeForm(form);      // Should succeed
         
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
@@ -169,7 +170,7 @@ void testUnsignedFormExecution() {
         president.executeForm(pardon);
         
     } catch (std::exception &e) {
-        std::cout << "Unexpected error: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
@@ -201,10 +202,6 @@ void testGradeLimitsEdgeCases() {
 }
 
 int main() {
-    // Seed random for robotomy
-    srand(time(NULL));
-    
-    // Run all tests
     testBureaucratCreation();
     testShrubberyForm();
     testRobotomyForm();

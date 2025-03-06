@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm() : name("default"), signedAForm(false), signGrade(150), execGrade(150) { std::cout << "AForm default constructor" << std::endl; }
+AForm::AForm() : name("default"), signedAForm(false), signGrade(150), execGrade(150) {}
 
 AForm::AForm(std::string name, int signGrade, int execGrade) : name(name), signedAForm(false), signGrade(signGrade), execGrade(execGrade)
 {
@@ -9,7 +9,6 @@ AForm::AForm(std::string name, int signGrade, int execGrade) : name(name), signe
         throw AForm::AFormGradeTooHighException();
     if (signGrade > 150 || execGrade > 150)
         throw AForm::AFormGradeTooLowException();
-    std::cout << "AForm constructor with parameters" << std::endl;
 }
 
 AForm::AForm(AForm const &src) : name(src.name), signedAForm(src.signedAForm), signGrade(src.signGrade), execGrade(src.execGrade) {}
@@ -22,7 +21,7 @@ AForm &AForm::operator=(AForm const &src)
     return *this;
 }
 
-AForm::~AForm() { std::cout << "AForm destructor called" << std::endl; }
+AForm::~AForm() {}
 
 
 int AForm::getSignGrade() const { return this->signGrade; }
@@ -58,10 +57,12 @@ const char *AForm::FormNotSignedException::what() const throw() { return "Form n
 
 const char *AForm::EmptyTargetException::what() const throw() { return "Target cannot be empty"; }
 
-std::ostream &operator<<(std::ostream &out, const AForm &AForm)
+std::ostream &operator<<(std::ostream &out, const AForm &form)
 {
-    out << AForm.getName() << ", AForm grade required to sign " << AForm.getSignGrade()
-        << ", grade required to execute " << AForm.getExecGrade()
-        << ", is signed: " << (AForm.getSignedAForm() ? "yes" : "no");
+    out << "Form Name: " << form.getName() << "\n"
+        << "Status: " << (form.getSignedAForm() ? "Signed" : "Not Signed") << "\n"
+        << "Grade required to sign: " << form.getSignGrade() << "\n"
+        << "Grade required to execute: " << form.getExecGrade() << "\n";
     return out;
 }
+

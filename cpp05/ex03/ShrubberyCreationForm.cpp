@@ -4,16 +4,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 {
     if (target.empty())
         throw AForm::EmptyTargetException();
-    std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm destructor called" << std::endl; }
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     AForm::execute(executor);
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file.is_open())
+        throw FileOpenException();
+    if (file.fail())
         throw FileOpenException();
 
     file << "     ccee88oo" << std::endl;

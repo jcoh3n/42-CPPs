@@ -4,10 +4,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 {
     if (target.empty())
         throw AForm::EmptyTargetException();
-    std::cout << "PresidentialPardonForm constructor called" << std::endl;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() { std::cout << "PresidentialPardonForm destructor called" << std::endl; }
+PresidentialPardonForm::~PresidentialPardonForm() {}
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
