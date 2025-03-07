@@ -7,12 +7,12 @@
 #include <cmath> // std::isnan, std::isinf
 
 // CAS SPECIAUX
-bool isSpecialCase(const std::string &input) {
+bool ScalarConverter::isSpecialCase(std::string input) {
     return (input == "nan" || input == "inf" || input == "-inf" ||
             input == "nanf" || input == "inff" || input == "-inff");
 }
 
-void handleSpecialCase(const std::string &input) {
+void ScalarConverter::handleSpecialCase(std::string const &input) {
     std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
 
@@ -28,10 +28,7 @@ void handleSpecialCase(const std::string &input) {
     }
 }
 
-
-
 // CHECK TYPE PART
-
 bool ScalarConverter::isChar(std::string input) {
     if (input.length() == 1 && !std::isdigit(input[0]) && std::isprint(input[0])) {
         return true;
@@ -40,7 +37,6 @@ bool ScalarConverter::isChar(std::string input) {
 }
 
 bool ScalarConverter::isInt(std::string input) {
-    
     if (input.length() == 1 && !std::isdigit(input[0])) return false;
     for (size_t i = 0; i < input.length(); i++) {
         if (i == 0 && (input[i] == '+' || input[i] == '-')) continue;
@@ -85,21 +81,17 @@ bool ScalarConverter::isDouble(std::string input) {
 }
 
 // PRINT PART
-
 void ScalarConverter::printChar(char c) {
     std::cout << "char: ";
-    if (std::isprint(c))
+    if (std::isprint(c)) {
         std::cout << "'" << c << "'" << std::endl;
-    else
+    } else {
         std::cout << "Non displayable" << std::endl;
+    }
 }
 
 void ScalarConverter::printInt(int i) {
-    if (i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max()) {
-        std::cout << "int: impossible" << std::endl;
-    } else {
-        std::cout << "int: " << i << std::endl;
-    }
+    std::cout << "int: " << i << std::endl;
 }
 
 void ScalarConverter::printFloat(float f) {
@@ -110,42 +102,31 @@ void ScalarConverter::printDouble(double d) {
     std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
 
-void ScalarConverter::convert(const std::string &input)
-{
-    // Vérifie si la chaîne est un cas spécial
-    if (isSpecialCase(input)) {
-        handleSpecialCase(input);
-        return;
-    }
+// Fonctions d'affichage génériques
+void ScalarConverter::printConversionChar(char c) {
+    printChar(c);
+    printInt(static_cast<int>(c));
+    printFloat(static_cast<float>(c));
+    printDouble(static_cast<double>(c));
+}
 
-    if (isChar(input)) {
-        char c = input[0];
-        printChar(c);
-        printInt(static_cast<int>(c));
-        printFloat(static_cast<float>(c));
-        printDouble(static_cast<double>(c));
-    } else if (isInt(input)) {
-        int i = std::atoi(input.c_str());
-        printChar(static_cast<char>(i));
-        printInt(i);
-        printFloat(static_cast<float>(i));
-        printDouble(static_cast<double>(i));
-    } else if (isFloat(input)) {
-        float f = std::atof(input.c_str());
-        printChar(static_cast<char>(f));
-        printInt(static_cast<int>(f));
-        printFloat(f);
-        printDouble(static_cast<double>(f));
-    } else if (isDouble(input)) {
-        double d = std::atof(input.c_str());
-        printChar(static_cast<char>(d));
-        printInt(static_cast<int>(d));
-        printFloat(static_cast<float>(d));
-        printDouble(d);
-    } else {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: impossible" << std::endl;
-        std::cout << "double: impossible" << std::endl;
-    }
+void ScalarConverter::printConversionInt(int i) {
+    printChar(static_cast<char>(i));
+    printInt(i);
+    printFloat(static_cast<float>(i));
+    printDouble(static_cast<double>(i));
+}
+
+void ScalarConverter::printConversionFloat(float f) {
+    printChar(static_cast<char>(f));
+    printInt(static_cast<int>(f));
+    printFloat(f);
+    printDouble(static_cast<double>(f));
+}
+
+void ScalarConverter::printConversionDouble(double d) {
+    printChar(static_cast<char>(d));
+    printInt(static_cast<int>(d));
+    printFloat(static_cast<float>(d));
+    printDouble(d);
 }
