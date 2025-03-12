@@ -16,7 +16,7 @@ public:
 
     MutantStack() : std::stack<T>() {}
     MutantStack(MutantStack const &src) : std::stack<T>(src) {}
-    MutantStack operator=(MutantStack const &src) {
+    MutantStack& operator=(MutantStack const &src) {
         if (this != &src)
             std::stack<T>::operator=(src);
         return *this;
