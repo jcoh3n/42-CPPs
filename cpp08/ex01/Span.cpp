@@ -17,10 +17,9 @@ Span &Span::operator=(const Span &span) {
 Span::~Span() {}
 
 void Span::addNumber(int n) {
-    if (_numbers.size() < _maxSize)
-        _numbers.push_back(n);
-    else
-        throw std::length_error("The container is full.");
+    if (_numbers.size() >= _maxSize) // si la taille du vector est >= a la taille max
+        throw std::length_error("Span is already full.");
+    _numbers.push_back(n);
 }
 
 int Span::shortestSpan() {
