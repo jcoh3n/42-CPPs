@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cstring>
 #include <cstdlib>
 
 int evaluateRPN(const std::string& expression);
