@@ -90,7 +90,7 @@ void BitcoinExchange::processInput(const std::string& inputFile) {
     }
 
     std::string line;
-    // passe la première ligne
+    // passe la première ligne (en-tête)
     std::getline(file, line);
     while (std::getline(file, line))
     {
@@ -104,12 +104,24 @@ void BitcoinExchange::processInput(const std::string& inputFile) {
         std::string valueStr = line.substr(pipePos + 2);
         float value;
 
+        if (valueStr.find('e') != std::string::npos || valueStr.find('E') != std::string::npos) {
+            std::cerr << "Error: invalid value format => " << valueStr << std::endl;
+            continue;
+        }
+
+        // Vérification que la valeur est un nombre valide
+        std::istringstream iss(valueStr);
+        iss >> value;
+        if (iss.fail() || !iss.eof()) {
+            std::cerr << "Error: invalid value format => " << valueStr << std::endl;
+            continue;
+        }
+
         if (!isValidDate(date)) {
             std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
 
-        std::istringstream(valueStr) >> value;
         if (!isValidValue(value)) continue;
 
         calculateAndDisplay(date, value);
